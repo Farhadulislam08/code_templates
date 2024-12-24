@@ -1,0 +1,20 @@
+int extended_gcd(int a, int b, int &x, int &y) {
+    if(a == 0) {
+        x = 0;
+        y = 1; 
+        return b;
+    }
+    int x1 , y1;
+    int gc = extended_gcd(b % a, a, x1, y1);
+    x = y1 - (b/a) * x1;
+    y = x1;
+    return gc;
+}
+int modInverse(int a, int b) {
+    int x,y;
+    int gc =  extended_gcd(a,b,x,y);
+    if( gc == 1) {//if inverse true
+        return (x % b + b)%b;
+    } else -1;// inverse false
+    
+}
